@@ -1,21 +1,24 @@
 ﻿#include <iostream>
+#include <array>
 
 constexpr unsigned int SIZE{ 30 };
 constexpr unsigned int MOUNTH{ 12 };
 
 //Автоматическая генерация псевдослучайными значениями массива
-void fillArrayAuto(int* array, const int SIZE) {
+void fillArrayAuto(int* array, const size_t SIZE) {
 	srand(time(NULL));
-	for (size_t i = 0; i < SIZE; ++i) {
+
+	for (int i = 0; i < SIZE; ++i) {
 		array[i] = 1 + rand() % 10;
 	}
 }
 
 
 //Ручное заполнение элементов в массив
-void fillArrayManually(int* array, const int SIZE) {
+void fillArrayManually(int* array, const size_t SIZE) {
 	int tmp{ 0 };
-	for (size_t i = 0; i < SIZE; ++i) {
+
+	for (int i = 0; i < SIZE; ++i) {
 		std::cout << "Enter prifit " << i << " Mounth: ";
 		std::cin >> tmp;
 		array[i] = tmp;
@@ -24,7 +27,7 @@ void fillArrayManually(int* array, const int SIZE) {
 
 
 // Заполнение массива с отрицательными элементами
-void fillArray(int* array, const int SIZE) {
+void fillArray(int* array, const size_t SIZE) {
 	srand(time(NULL));
 
 	for (int i = 0; i < SIZE; ++i) {
@@ -35,8 +38,8 @@ void fillArray(int* array, const int SIZE) {
 
 //Поиск минимального и максимального элементов в массиве
 void searchMinAndMaxElementInArray(int* array, const int SIZE) {
-	int minElement = array[0];
-	int maxElement = array[0];
+	int minElement{ array[0] }, maxElement{ array[0] };
+
 	for (int i = 0; i < SIZE; ++i) {
 		if (minElement < array[i]) {
 			minElement = array[i];
@@ -51,9 +54,9 @@ void searchMinAndMaxElementInArray(int* array, const int SIZE) {
 
 
 //Поиск минимальной и максимальной прибыли компании в заданном диапазоне
-void searchMinAndMaxProfit(int* array, const int beginRange, const int endRange) {
-	int minElement = array[0];
-	int maxElement = array[0];
+void searchMinAndMaxProfit(int* array, const size_t beginRange, const size_t endRange) {
+	int minElement{ array[0] },maxElement{ array[0] };
+
 	for (int i = beginRange; i < endRange; ++i) {
 		if (minElement < array[i]) {
 			minElement = array[i];
@@ -62,12 +65,13 @@ void searchMinAndMaxProfit(int* array, const int beginRange, const int endRange)
 			maxElement = array[i];
 		}
 	}
+
 	std::cout << "\nMin Profit Company: " << minElement << "\nMax Profit Company: " << maxElement;
 }
 
 
 //Вывод массива
-void print(int* array, const size_t SIZE) {
+void print(const int* array, const size_t SIZE) {
 	for (int i = 0; i < SIZE; ++i) {
 		std::cout << array[i] << " ";
 	}
@@ -75,7 +79,7 @@ void print(int* array, const size_t SIZE) {
 
 
 //Сумма элементов в заданном диапазоне
-int sumElement(int* array, const int beginRange, const int endRange, const int value) {
+int sumElement(int* array, const size_t beginRange, const size_t endRange, const size_t value) {
 	int sumElement{ 0 };
 	for (int i = beginRange; i <= endRange; ++i) {
 		if (array[i] < value) {
@@ -87,7 +91,7 @@ int sumElement(int* array, const int beginRange, const int endRange, const int v
 
 
 //Сумма отрицательных элементов
-int SumNegativeElement(int* array, const int SIZE) {
+int SumNegativeElement(int* array, const size_t SIZE) {
 	int sum{ 0 };
 	for (int i = 0; i < SIZE; ++i) {
 		if (array[i] < 0) {
@@ -103,7 +107,7 @@ int SumNegativeElement(int* array, const int SIZE) {
 
 
 // Поиск индекса минимального элемента
-int seatchIndexMinElement(int* array, const int SIZE) {
+int seatchIndexMinElement(int* array, const size_t SIZE) {
 	int indexMin{ 0 }, minElenent{ array[0] };
 	for (int i = 0; i < SIZE; ++i) {
 		if (array[i] < minElenent) {
@@ -117,7 +121,7 @@ int seatchIndexMinElement(int* array, const int SIZE) {
 
 
 // Поиск индекса максимального элемента
-int seatchIndexMaxElement(int* array, const int SIZE) {
+int seatchIndexMaxElement(int* array, const size_t SIZE) {
 	int indexMax{ 0 }, maxElement{ array[0] };
 	for (int i = 0; i < SIZE; ++i) {
 		if (array[i] > maxElement) {
@@ -131,7 +135,7 @@ int seatchIndexMaxElement(int* array, const int SIZE) {
 
 
 //Произведение элементов, находящихся между min и max элементами.
-int multiplicationElement(int* array, const int SIZE) {
+int multiplicationElement(int* array, const size_t SIZE) {
 	int minIndexElement{ seatchIndexMinElement(array, SIZE) }, maxIndexElement{ seatchIndexMaxElement(array, SIZE) }, multiplication{ 0 };
 	for (int i = minIndexElement; i < maxIndexElement; ++i) {
 		multiplication *= array[i];
@@ -142,7 +146,7 @@ int multiplicationElement(int* array, const int SIZE) {
 
 
 //Произведение элементов с четными номерами
-int  multiplicationEvenElement(int* array, const int SIZE) {
+int  multiplicationEvenElement(int* array, const size_t SIZE) {
 	int multiplicationEven{ 0 };
 	for (int i = 0; i < SIZE; ++i) {
 		if (array[i] % 2 == 0) {
@@ -155,7 +159,7 @@ int  multiplicationEvenElement(int* array, const int SIZE) {
 
 
 //Нахождение первого индекса отрицательного элемента
-int firstIndexEvenElement(int* array, const int SIZE) {
+int firstIndexEvenElement(int* array, const size_t SIZE) {
 	int firstIndexEven{ 0 };
 	for (int i = 0; i < SIZE; ++i) {
 		if (array[i] < 0) {
@@ -168,7 +172,7 @@ int firstIndexEvenElement(int* array, const int SIZE) {
 
 
 //Нахождение последнего индекса отрицательного элемента
-int endIndexEvenElement(int* array, const int SIZE) {
+int endIndexEvenElement(int* array, const size_t SIZE) {
 	int endIndexEven{ 0 };
 	for (int i = 0; i < SIZE; ++i) {
 		if (array[i] < 0) {
@@ -180,7 +184,7 @@ int endIndexEvenElement(int* array, const int SIZE) {
 
 
 // Сумму элементов, находящихся между первым и последним отрицательными элементами.
-int sumnElementFirstEvenAndEndEven(int* array, const int SIZE) {
+int sumnElementFirstEvenAndEndEven(int* array, const size_t SIZE) {
 	int firstIndexEven{ firstIndexEvenElement(array, SIZE) }, endIndexEven{ endIndexEvenElement(array, SIZE) }, sum{ 0 };
 
 	for (int i = firstIndexEven; i < endIndexEven; ++i) {
@@ -232,7 +236,7 @@ int main()
 		std::cout << "Enter value: ";
 		std::cin >> value;
 
-		if (beginRange < endRange) {
+		if (beginRange < endRange && beginRange > 0 && endRange > 0) {
 			std::cout << "\nSum Element: " << sumElement(mArrayTask2, beginRange, endRange, value);
 		}
 		break;
@@ -245,7 +249,7 @@ int main()
 		std::cout << "Enter the value of the ending of the range: ";
 		std::cin >> endRange;
 		fillArrayManually(mArrayTask3, MOUNTH);
-		if (beginRange < endRange) {
+		if (beginRange < endRange && beginRange > 0 && endRange > 0) {
 			searchMinAndMaxProfit(mArrayTask3, beginRange, endRange);
 		}
 		break;
