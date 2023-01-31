@@ -28,7 +28,7 @@ void fillArrayManually(int* array, const size_t SIZE) {
 
 // Заполнение массива с отрицательными элементами
 void fillArray(int* array, const size_t SIZE) {
-	srand((unsigned)time(NULL));
+	srand((int)time(NULL));
 
 	for (size_t i = 0; i < SIZE; ++i) {
 		array[i] = 100 - rand() % 100;
