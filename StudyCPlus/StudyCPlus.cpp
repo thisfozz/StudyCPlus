@@ -20,7 +20,7 @@ void fillArrayManually(int* array, const size_t& SIZE) {
 	int tmp{ 0 };
 
 	for (size_t i = 0; i < SIZE; ++i) {
-		std::cout << "Enter value: " << week(i);
+		std::cout << "Enter value: "; week(i);
 		std::cin >> tmp;
 		array[i] = tmp;
 	}
@@ -304,22 +304,23 @@ void Homework() {
 }
 
 /*======================== ВТОРОЕ ДОМАШНЕЕ ЗАДАНИЕ ========================*/
-std::string week(const int& index) {
+void week(const int& index) {
 	if (index == 0)
-		return " \nMonday: ";
+		std::cout << " \nMonday: ";
 	if (index == 1)
-		return " \nTuesday: ";
+		std::cout << " \nTuesday: ";
 	if (index == 2)
-		return " \nWednesday: ";
+		std::cout << " \nWednesday: ";
 	if (index == 3)
-		return " \nThursday: ";
+		std::cout << " \nThursday: ";
 	if (index == 4)
-		return " \nFriday: ";
+		std::cout << " \nFriday: ";
 	if (index == 5)
-		return " \nSaturday: ";
+		std::cout << " \nSaturday: ";
 	if (index == 6)
-		return " \nSunday: ";
+		std::cout << " \nSunday: ";
 }
+
 int sumWeek(const int* array, const int& SIZE) {
 	int sum{ 0 };
 
@@ -333,15 +334,23 @@ int avgWeek(const int* array, const int& SIZE) {
 	return (sumWeek(array, SIZE) / SIZE);
 }
 
-void countDayMore100D(const int* array, const int& SIZE) {
-	int count{0};
+void printWeek(std::vector<int> saveIndex) {
+	for (int i = 0; i < saveIndex.size(); ++i) {
+		week(i);
+	}
+}
+
+int countDayMore100D(const int* array, const int& SIZE) {
+	std::vector<int> saveIndex{};
+	int count{ 0 };
 	for (size_t i = 0; i < SIZE; ++i) {
 		if (array[i] > 100) {
-			std::cout << week(i);
+			saveIndex.push_back(i);
 			count++;
 		}
 	}
-	std::cout << "\nCount day > 100: " << count;
+	printWeek(saveIndex);
+	return count;
 }
 
 void task1() {
@@ -415,10 +424,10 @@ void task3() {
 
 	std::cout << "\nNaverage for week: " << avgWeek(array, WEEK);
 	std::cout << "\nSum for Week: " << sumWeek(array, WEEK);
-	countDayMore100D(array, WEEK);
+	std::cout << "Count Day: " << countDayMore100D(array, WEEK);
 }
 
 int main()
 {
-
+	task3();
 }
