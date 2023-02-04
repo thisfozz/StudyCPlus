@@ -40,20 +40,3 @@ void Homework();
 void task1();
 void task2();
 void task3();
-
-//void countDayMore100D(const int* array, const int& SIZE) {
-//	std::vector<int> saveIndex{};
-//	int count{ 0 };
-//	for (size_t i = 0; i < SIZE; ++i) {
-//		if (array[i] > 100) {
-//			saveIndex.push_back(i);
-//			//std::cout << week(i);
-//			count++;
-//		}
-//	}
-//	for (int i = 0; i < saveIndex.size(); ++i) {
-//		weekk(i);
-//	}
-//	//week(saveIndex);
-//	std::cout << "\nCount day > 100: " << count;
-//}
