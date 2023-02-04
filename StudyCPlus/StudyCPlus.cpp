@@ -1,33 +1,33 @@
 ﻿#include <iostream>
 #include <array>
+#include <vector>
+#include "HomeworkOne.h"
 
 constexpr unsigned int SIZE{ 30 };
 constexpr unsigned int MOUNTH{ 12 };
 
 //Автоматическая генерация псевдослучайными значениями массива
-void fillArrayAuto(int* array, const size_t SIZE) {
-	srand((unsigned)time(NULL));
+void fillArrayAuto(int* array, const size_t& SIZE) {
+	srand(time(NULL));
 
 	for (size_t i = 0; i < SIZE; ++i) {
 		array[i] = 1 + rand() % 10;
 	}
 }
 
-
 //Ручное заполнение элементов в массив
-void fillArrayManually(int* array, const size_t SIZE) {
+void fillArrayManually(int* array, const size_t& SIZE) {
 	int tmp{ 0 };
 
 	for (size_t i = 0; i < SIZE; ++i) {
-		std::cout << "Enter prifit " << i << " Mounth: ";
+		std::cout << "Enter value: " << week(i);
 		std::cin >> tmp;
 		array[i] = tmp;
 	}
 }
 
-
 // Заполнение массива с отрицательными элементами
-void fillArray(int* array, const size_t SIZE) {
+void fillArray(int* array, const size_t& SIZE) {
 	srand((int)time(NULL));
 
 	for (size_t i = 0; i < SIZE; ++i) {
@@ -35,9 +35,8 @@ void fillArray(int* array, const size_t SIZE) {
 	}
 }
 
-
 //Поиск минимального элемента в массиве
-int min(int* array, const int SIZE) {
+int min(int* array, const int& SIZE) {
 	int minElement{ array[0] };
 
 	for (size_t i = 0; i < SIZE; ++i) {
@@ -50,7 +49,7 @@ int min(int* array, const int SIZE) {
 }
 
 //Поиск максимального элемента в массиве
-int max(int* array, const int SIZE) {
+int max(int* array, const int& SIZE) {
 	int maxElement{ array[0] };
 
 	for (size_t i = 0; i < SIZE; ++i) {
@@ -62,9 +61,8 @@ int max(int* array, const int SIZE) {
 	return maxElement;
 }
 
-
 //Поиск минимальной прибыли компании в заданном диапазоне
-int searchMinProfit(int* array, const size_t beginRange, const size_t endRange) {
+int searchMinProfit(int* array, const size_t& beginRange, const size_t& endRange) {
 	int minElement{ array[0] };
 
 	for (size_t i = beginRange; i < endRange; ++i) {
@@ -77,7 +75,7 @@ int searchMinProfit(int* array, const size_t beginRange, const size_t endRange) 
 }
 
 //Поиск максимальной приыбли компании в заданном диапазоне
-int searchMaxProfit(int* array, const size_t beginRange, const size_t endRange) {
+int searchMaxProfit(int* array, const size_t& beginRange, const size_t& endRange) {
 	int maxElement{ array[0] };
 
 	for (size_t i = beginRange; i < endRange; ++i) {
@@ -89,17 +87,15 @@ int searchMaxProfit(int* array, const size_t beginRange, const size_t endRange) 
 	return maxElement;
 }
 
-
 //Вывод массива
-void print(const int* array, const size_t SIZE) {
+void print(const int* array, const size_t& SIZE) {
 	for (int i = 0; i < SIZE; ++i) {
 		std::cout << array[i] << " ";
 	}
 }
 
-
 //Сумма элементов в заданном диапазоне
-int sumElem(int* array, const size_t beginRange, const size_t endRange, const size_t value) {
+int sumElem(int* array, const size_t& beginRange, const size_t& endRange, const size_t& value) {
 	int sumElement{ 0 };
 
 	for (size_t i = beginRange; i <= endRange; ++i) {
@@ -111,9 +107,8 @@ int sumElem(int* array, const size_t beginRange, const size_t endRange, const si
 	return sumElement;
 }
 
-
 //Сумма отрицательных элементов
-int sumNegativeElem(int* array, const size_t SIZE) {
+int sumNegativeElem(int* array, const size_t& SIZE) {
 	int sum{ 0 };
 
 	for (size_t i = 0; i < SIZE; ++i) {
@@ -128,9 +123,8 @@ int sumNegativeElem(int* array, const size_t SIZE) {
 	return sum;
 }
 
-
 // Поиск индекса минимального элемента
-int searchIdxMinElem(int* array, const size_t SIZE) {
+int searchIdxMinElem(int* array, const size_t& SIZE) {
 	size_t indexMin{ 0 };
 	int minElenent{ array[0] };
 
@@ -144,9 +138,8 @@ int searchIdxMinElem(int* array, const size_t SIZE) {
 	return static_cast<int>(indexMin);
 }
 
-
 // Поиск индекса максимального элемента
-int searchIdxMaxElem(int* array, const size_t SIZE) {
+int searchIdxMaxElem(int* array, const size_t& SIZE) {
 	size_t indexMax{ 0 };
 	int maxElement{ array[0] };
 
@@ -160,9 +153,8 @@ int searchIdxMaxElem(int* array, const size_t SIZE) {
 	return static_cast<int>(indexMax);
 }
 
-
 //Произведение элементов, находящихся между min и max элементами.
-int multElem(int* array, const size_t SIZE) {
+int multElem(int* array, const size_t& SIZE) {
 	int minIndexElement{ searchIdxMinElem(array, SIZE) }, maxIndexElement{ searchIdxMaxElem(array, SIZE) }, multiplication{ 0 };
 
 	for (size_t i = minIndexElement; i < maxIndexElement; ++i) {
@@ -172,9 +164,8 @@ int multElem(int* array, const size_t SIZE) {
 	return multiplication;
 }
 
-
 //Произведение элементов с четными номерами
-int  multEvenElem(int* array, const size_t SIZE) {
+int  multEvenElem(int* array, const size_t& SIZE) {
 	int multiplicationEven{ 0 };
 
 	for (size_t i = 0; i < SIZE; ++i) {
@@ -186,9 +177,8 @@ int  multEvenElem(int* array, const size_t SIZE) {
 	return multiplicationEven;
 }
 
-
 //Нахождение первого индекса отрицательного элемента
-int firstIdxEvenElem(int* array, const size_t SIZE) {
+int firstIdxEvenElem(int* array, const size_t& SIZE) {
 	size_t firstIndexEven{ 0 };
 
 	for (size_t i = 0; i < SIZE; ++i) {
@@ -201,9 +191,8 @@ int firstIdxEvenElem(int* array, const size_t SIZE) {
 	return static_cast<int>(firstIndexEven);
 }
 
-
 //Нахождение последнего индекса отрицательного элемента
-int endIdxEvenElem(int* array, const size_t SIZE) {
+int endIdxEvenElem(int* array, const size_t& SIZE) {
 	size_t endIndexEven{ 0 };
 
 	for (size_t i = 0; i < SIZE; ++i) {
@@ -215,9 +204,8 @@ int endIdxEvenElem(int* array, const size_t SIZE) {
 	return static_cast<int>(endIndexEven);
 }
 
-
 // Сумму элементов, находящихся между первым и последним отрицательными элементами.
-int sumElemFirstEvenAndEndEven(int* array, const size_t SIZE) {
+int sumElemFirstEvenAndEndEven(int* array, const size_t& SIZE) {
 	int firstIndexEven{ firstIdxEvenElem(array, SIZE) }, endIndexEven{ endIdxEvenElem(array, SIZE) }, sum{ 0 };
 
 	for (size_t i = firstIndexEven; i < endIndexEven; ++i) {
@@ -227,9 +215,7 @@ int sumElemFirstEvenAndEndEven(int* array, const size_t SIZE) {
 	return sum;
 }
 
-
-int main()
-{
+void Homework() {
 	uint8_t choice{ 0 };
 	int value{ 0 };
 	int mArrayTask1[SIZE]{}, mArrayTask2[SIZE]{}, mArrayTask3[MOUNTH]{}, beginRange{ 0 }, endRange{ 0 }, sum{ 0 }, sizeArrayDynamic{ 0 };
@@ -315,4 +301,124 @@ int main()
 
 		break;
 	}
+}
+
+/*======================== ВТОРОЕ ДОМАШНЕЕ ЗАДАНИЕ ========================*/
+std::string week(const int& index) {
+	if (index == 0)
+		return " \nMonday: ";
+	if (index == 1)
+		return " \nTuesday: ";
+	if (index == 2)
+		return " \nWednesday: ";
+	if (index == 3)
+		return " \nThursday: ";
+	if (index == 4)
+		return " \nFriday: ";
+	if (index == 5)
+		return " \nSaturday: ";
+	if (index == 6)
+		return " \nSunday: ";
+}
+int sumWeek(const int* array, const int& SIZE) {
+	int sum{ 0 };
+
+	for (size_t i = 0; i < SIZE; ++i) {
+		sum += array[i];
+	}
+	return sum;
+}
+
+int avgWeek(const int* array, const int& SIZE) {
+	return (sumWeek(array, SIZE) / SIZE);
+}
+
+void countDayMore100D(const int* array, const int& SIZE) {
+	int count{0};
+	for (size_t i = 0; i < SIZE; ++i) {
+		if (array[i] > 100) {
+			std::cout << week(i);
+			count++;
+		}
+	}
+	std::cout << "\nCount day > 100: " << count;
+}
+
+void task1() {
+	/*
+	* Написать программу, копирующую последовательно элементы одного массива размером 10 элементов в 2 массива размером 5 элементов каждый.
+	*/
+
+	const int SIZE = 10;
+	const int SIZEANOTHER = 5;
+	int arrayOne[SIZE];
+	int arrayTwo[SIZEANOTHER];
+	int arrayThree[SIZEANOTHER];
+
+	fillArrayAuto(arrayOne, SIZE);
+
+	for (size_t i = 0; i < 5; ++i) {
+		arrayTwo[i] = arrayOne[i];
+	}
+
+	for (size_t i = 0; i < 5; ++i) {
+		arrayThree[i] = arrayOne[5+i];
+	}
+
+	std::cout << "Array 1: "; print(arrayOne, SIZE);
+	std::cout << "\n";
+	std::cout << "Array 2: "; print(arrayTwo, SIZEANOTHER);
+	std::cout << "\n";
+	std::cout << "Array 3: "; print(arrayThree, SIZEANOTHER);
+}
+
+void task2() {
+	/*
+	* Напишите программу, которая выполняет поэлементную сумму двух массивов и результат заносит в третий массив.
+	*/
+
+	const int SIZE{ 5 };;
+	int arrayOne[SIZE];
+	int arrayTwo[SIZE];
+	int arrayThree[SIZE];
+
+	fillArrayAuto(arrayOne, SIZE);
+	fillArrayAuto(arrayTwo, SIZE);
+
+	print(arrayOne, SIZE);
+	std::cout << "\n";
+	print(arrayTwo, SIZE);
+	std::cout << "\n";
+
+	for (size_t i = 0; i < SIZE; ++i) {
+		arrayThree[i] = arrayOne[i] + arrayTwo[i];
+	}
+
+	print(arrayThree, SIZE);
+}
+
+void task3() {
+	/*
+	* Пользователь вводит данные о своих расходах в долларах за неделю (каждый день). Написать программу, которая вычисляет:
+		■ среднюю (за неделю) потраченную сумму;
+		■ общую сумму, потраченную пользователем за неделю;
+		■ количество дней и их названия (например, «вторник»), когда сумма расхода (в день) превысила 100 долларов.
+	*/
+
+	const int WEEK = 7;
+	int array[WEEK]{};
+	int count{0};
+	std::vector<int>saveIndex{};
+
+	fillArrayManually(array, WEEK);
+	print(array, WEEK);
+
+	std::cout << "\nNaverage for week: " << avgWeek(array, WEEK);
+	std::cout << "\nSum for Week: " << sumWeek(array, WEEK);
+	countDayMore100D(array, WEEK);
+}
+
+int main()
+{
+
 }
