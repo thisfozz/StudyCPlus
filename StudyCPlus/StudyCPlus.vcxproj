@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="StudyCPlus.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HomeworkOne.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
