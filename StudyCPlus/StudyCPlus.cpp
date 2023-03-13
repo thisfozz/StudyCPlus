@@ -1,6 +1,4 @@
 ﻿#include <iostream>
-#include <array>
-#include <vector>
 #include "HomeworkOne.h"
 
 constexpr unsigned int SIZE{ 30 };
@@ -427,7 +425,105 @@ void task3() {
 	std::cout << "Count Day: " << countDayMore100D(array, WEEK);
 }
 
+void fillArrayRand(int* array, const int& SIZE) {
+	srand(time(NULL));
+
+	for (size_t i = 0; i < SIZE; ++i) {
+		array[i] = 1 + rand() % 100;
+	}
+}
+
+void fillArrayLinear(int* array, const int& SIZE) {
+	for (size_t i = 1; i <= SIZE; ++i) {
+		array[i] = i;
+	}
+}
+
+int linearSearch(int* array, const int& SIZE, const int& value) {
+	for (size_t i = 0; i < SIZE; ++i) {
+		if (array[i] == value) {
+			return i;
+		}
+	}
+}
+
+int binarySearch(int* array, int min, int max, int value) {
+
+	if (max < min)
+		std::cout << "MAX < MIN";
+	int mid = (min + max) / 2;
+	char choice{};
+
+	std::cout << "Your value: " << " > " << array[mid] << " ? ";
+	std::cout << "\nY - YES   :   N - NO   :   =   ";
+	std::cin >> choice;
+	switch (choice)
+	{
+	case 'Y':
+		if (array[mid] > value)
+			binarySearch(array, min, mid - 1, value);
+		break;
+	case 'N':
+		if (array[mid] < value)
+			binarySearch(array, min, mid + 1, value);
+		break;
+	case '=':
+		if (array[mid] == value) {
+			std::cout << "Value is find: " << array[mid];
+			return 1;
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+void print(int* array, int SIZE) {
+	for (int i = 0; i < SIZE; i++) {
+		std::cout << array[i] << " ";
+	}
+}
+
+/*======================== ТРЕТЬЕ ДОМАШНЕЕ ЗАДАНИЕ ========================*/
+
+float average(const int* array, const int& SIZE) {
+	float average{ 0 };
+
+	for (int i = 0; i < SIZE; ++i) {
+		average += array[i];
+	}
+	average = average / SIZE;
+
+	return average;
+}
+
+void count(const int* array, const int& SIZE) {
+	int positive{ 0 }, negative{ 0 }, nullelement{ 0 };
+
+	for (int i = 0; i < SIZE; ++i) {
+		if (array[i] > 0) {
+			++positive;
+		}
+		else if (array[i] < 0) {
+			++negative;
+		}
+		else {
+			++nullelement;
+		}
+	}
+
+	std::cout << "Positive element: " << positive << "\nNegative element: " << negative << "Null element: " << nullelement;
+}
+
 int main()
 {
-	task3();
+	const int SIZE = 10;
+	int array[SIZE]{};
+	fillArrayRand(array, SIZE);
+	print(array, SIZE);
+	std::cout << "\n\nAverage = " << average(array, SIZE);
+
+	system("cls");
+	fillArrayRand(array, SIZE);
+	print(array, SIZE);
 }
